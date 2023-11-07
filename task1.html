@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Reordering</title>
+  /* Basic styles */
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .button {
+      display: block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="button">1</div>
+    <div class="button">2</div>
+    <div class="button">3</div>
+  </div>
+
+<!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Event handler
+      $('.button').click(function () {
+        var currentIndex = $(this).index();
+        var totalButtons = $('.button').length;
+
+        if (currentIndex > 0) {
+          $(this).insertBefore($('.button').eq(currentIndex - 1));
+        } else {
+          $(this).insertAfter($('.button').eq(currentIndex + 1));
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
